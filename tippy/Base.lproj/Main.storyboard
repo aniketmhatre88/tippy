@@ -83,7 +83,13 @@
                             <outletCollection property="gestureRecognizers" destination="PUP-Ly-H3o" appends="YES" id="QsS-Cl-HIq"/>
                         </connections>
                     </view>
-                    <navigationItem key="navigationItem" title="Tip Calculator" id="Xrh-RY-EET"/>
+                    <navigationItem key="navigationItem" title="Tip Calculator" id="Xrh-RY-EET">
+                        <barButtonItem key="rightBarButtonItem" title="Settings" id="RSK-Um-f7s">
+                            <connections>
+                                <segue destination="0Xh-c4-2UA" kind="push" id="ePD-vv-qlR"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="billField" destination="cpw-5O-42b" id="YK9-Bi-NV7"/>
                         <outlet property="tipControl" destination="vw2-lb-tvx" id="Z5w-cQ-doT"/>
@@ -99,6 +105,37 @@
                 </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="672.5" y="152.5"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="EVH-l6-5yG">
+            <objects>
+                <viewController id="0Xh-c4-2UA" customClass="SettingsViewController" customModule="tippy" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gvS-xa-tVf">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Default Tip %" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="csz-oH-TLY">
+                                <frame key="frameInset" minX="137" minY="197" width="101" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <pickerView contentMode="scaleToFill" misplaced="YES" id="SXR-eC-MSI">
+                                <frame key="frameInset" minX="16" minY="226" height="168" maxX="16"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            </pickerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Settings" id="S5T-02-bJ7"/>
+                    <connections>
+                        <outlet property="defaultPercentPicker" destination="SXR-eC-MSI" id="bVJ-cZ-oO4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TvM-fU-8sB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1144.5" y="153.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="l0T-er-Ar9">

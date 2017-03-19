@@ -16,7 +16,7 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        setupTipControl()
     }
 
     override func didReceiveMemoryWarning() {
@@ -29,15 +29,36 @@ class ViewController: UIViewController {
     }
     
     @IBAction func calculateTip(_ sender: AnyObject) {
-        let tipPercentages = [0.18, 0.2, 0.25]
+        let tipPercentages = Constants.tipPercents
         
         let bill = Double(billField.text!) ?? 0
         
-        let tip = bill * tipPercentages[tipControl.selectedSegmentIndex]
+        let tip = (bill * Double(tipPercentages[tipControl.selectedSegmentIndex]))/100
         let total = bill + tip
         
         tipLabel.text = String(format: "$%.2f", tip)
         totalLabel.text = String(format: "$%.2f", total)
+    }
+    
+    private func setupTipControl() {
+        tipControl.removeAllSegments()
+        for (index, element) in Constants.tipPercents.enumerated() {
+            tipControl.insertSegment(withTitle: "\(element)%", at: index, animated: false)
+        }
+        
+        selectDefaultTipPercentage()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        selectDefaultTipPercentage()
+        calculateTip(NSObject())
+    }
+    
+    private func selectDefaultTipPercentage() {
+        let defaultTipPercent = (UserDefaults.standard.object(forKey: "default_tip_percent") ?? 0) as! Int
+        tipControl.selectedSegmentIndex = defaultTipPercent
     }
 
 }
